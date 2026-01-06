@@ -1,0 +1,22 @@
+# Git
+.env
+.env.local
+*.log
+
+# Build outputs
+/bin/
+/dist/
+turso-migrate
+
+# Go
+vendor/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
