@@ -6,7 +6,7 @@
 # Build outputs
 /bin/
 /dist/
-turso-migrate
+/turso-migrate
 
 # Go
 vendor/
