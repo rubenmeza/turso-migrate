@@ -1,6 +1,6 @@
 module github.com/rubenmeza/turso-migrate
 
-go 1.25.5
+go 1.23
 
 require (
 	github.com/tursodatabase/libsql-client-go v0.0.0-20251219100830-236aa1ff8acc

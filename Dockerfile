@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:1.22-alpine AS builder
+FROM golang:1.23-alpine AS builder
 
 # Install ca-certificates and git
 RUN apk add --no-cache ca-certificates git
@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Build the binary
-RUN CGO_ENABLED=1 GOOS=linux go build -a -installsuffix cgo -o turso-migrate ./cmd/turso-migrate
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o turso-migrate ./cmd/turso-migrate
 
 # Runtime stage
 FROM alpine:latest
@@ -25,7 +25,7 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 
 # Copy the binary from builder stage
-COPY --from=builder /app/turso-migrate .
+COPY --from=builder /app/turso-migrate /usr/local/bin/turso-migrate
 
 # Create migrations directory
 RUN mkdir -p /migrations
@@ -34,5 +34,5 @@ RUN mkdir -p /migrations
 ENV MIGRATIONS_DIR=/migrations
 
 # Expose the binary
-ENTRYPOINT ["./turso-migrate"]
+ENTRYPOINT ["turso-migrate"]
 CMD ["--help"]

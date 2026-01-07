@@ -95,38 +95,6 @@ Displays which migrations have been applied and which are pending.`,
 				Description: `Show the current schema version of your Turso database.
 This is the version of the last applied migration.`,
 			},
-			{
-				Name:    "up",
-				Aliases: []string{"u"},
-				Usage:   "Apply all pending migrations",
-				Action:  upCommand,
-				Description: `Apply all pending migrations in order.
-Only migrations that haven't been applied yet will be executed.`,
-			},
-			{
-				Name:    "down",
-				Aliases: []string{"d"},
-				Usage:   "Rollback the last applied migration",
-				Action:  downCommand,
-				Description: `Rollback the most recently applied migration.
-This will execute the DOWN section of the migration file.`,
-			},
-			{
-				Name:    "status",
-				Aliases: []string{"s"},
-				Usage:   "Show migration status",
-				Action:  statusCommand,
-				Description: `Show the status of all migrations.
-Displays which migrations have been applied and which are pending.`,
-			},
-			{
-				Name:    "version",
-				Aliases: []string{"v"},
-				Usage:   "Show current schema version",
-				Action:  versionCommand,
-				Description: `Show the current schema version.
-This is the version of the last applied migration.`,
-			},
 		},
 		Before: func(c *cli.Context) error {
 			// Validate that we have required Turso configuration
